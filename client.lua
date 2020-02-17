@@ -97,20 +97,6 @@ local editBTN2 = Button(sWidth/2.0+0.5, sHeight-110.0, 150.0, 50.0, 'UPDATE SELE
 editBTN2:align('center')
 editBTN2:setParent(tab3)
 
-function recieveEditResponse(result)
-	editList:clear()
-
-	if next(result) == nil then
-		editList:addItem({"There is no data in DB!", "-", "-", "-"})
-	else
-		for idx, user in ipairs (result) do
-			editList:addItem({user.uID, user.uName, user.uSurName, user.uAddress})
-		end
-	end		
-end
-addEvent("recieveEditResponse", true)
-addEventHandler( "recieveEditResponse", localPlayer, recieveEditResponse)
-
 editBTN1:on('mouseup', function()
 	updateAllTabsList()
 end)
@@ -214,21 +200,6 @@ readBTN1:align('center')
 readBTN1:setParent(tab2)
 
 
-function recieveReadResponse(result)
-	list:clear()
-	
-	if next(result) == nil then
-		list:addItem({"There is no data in DB!", "-", "-", "-"})
-	else
-		for idx, user in ipairs (result) do
-			list:addItem({user.uID, user.uName, user.uSurName, user.uAddress})
-		end
-	end	
-
-end
-addEvent("recieveReadResponse", true)
-addEventHandler( "recieveReadResponse", localPlayer, recieveReadResponse)
-
 readBTN1:on('mouseup', function()
 	updateAllTabsList()
 end)
@@ -265,19 +236,6 @@ local DELETEBTN2 = Button(sWidth/2.0+0.5, sHeight-110.0, 150.0, 50.0, 'DELETE SE
 DELETEBTN2:align('center')
 DELETEBTN2:setParent(tab4)
 
-function recieveDeleteResponse(result)
-	DELETElist:clear()
-
-	if next(result) == nil then
-		DELETElist:addItem({"There is no data in DB!", "-", "-", "-"})
-	else
-		for idx, user in ipairs (result) do
-			DELETElist:addItem({user.uID, user.uName, user.uSurName, user.uAddress})
-		end
-	end		
-end
-addEvent("recieveDeleteResponse", true)
-addEventHandler( "recieveDeleteResponse", localPlayer, recieveDeleteResponse)
 
 
 DELETEBTN1:on('mouseup', function()
